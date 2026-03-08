@@ -11,3 +11,9 @@ conn = sqlite3.connect("books.db")
 df.to_sql("books", conn, if_exists="replace", index=False)
 
 print("Data successfully stored in SQL database!")
+
+
+# Simple analysis
+print("\nAverage Price:", df["Price"].mean())
+print("Most Expensive Book:", df["Price"].max())
+print("Total Books:", len(df))

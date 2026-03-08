@@ -1,13 +1,18 @@
+import streamlit as st
 import pandas as pd
 import sqlite3
 
-# Read the scraped CSV file
-df = pd.read_csv("books_data.csv")
-
-# Create connection to SQLite database
 conn = sqlite3.connect("books.db")
 
-# Store the data in SQL table
-df.to_sql("books", conn, if_exists="replace", index=False)
+df = pd.read_sql_query("SELECT * FROM books", conn)
 
-print("Data successfully stored in SQL database!")
+st.title("Web Scraping Data Dashboard")
+
+st.write("Dataset Preview")
+st.dataframe(df)
+
+st.write("Price Distribution")
+st.bar_chart(df["Price"])
+
+st.write("Statistics")
+st.write(df.describe())
