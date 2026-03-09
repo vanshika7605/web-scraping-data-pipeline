@@ -6,7 +6,6 @@ conn = sqlite3.connect("books.db")
 
 df = pd.read_sql_query("SELECT * FROM books", conn)
 
-
 st.title("Web Scraping Data Dashboard")
 
 st.write("Dataset Preview")
@@ -25,4 +24,4 @@ st.subheader("Rating Distribution")
 st.bar_chart(df["rating"].value_counts())
 
 st.subheader("Top 10 Most Expensive Books")
-st.dataframe(df.sort_values("price", ascending=False).head(10))
+st.dataframe(df.sort_values("Price", ascending=False).head(10))
