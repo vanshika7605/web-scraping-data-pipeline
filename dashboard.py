@@ -6,6 +6,7 @@ conn = sqlite3.connect("books.db")
 
 df = pd.read_sql_query("SELECT * FROM books", conn)
 
+
 st.title("Web Scraping Data Dashboard")
 
 st.write("Dataset Preview")
@@ -18,7 +19,7 @@ st.write("Statistics")
 st.write(df.describe())
 
 st.subheader("Average Book Price")
-st.write(df["price"].mean())
+st.write(df["Price"].mean())
 
 st.subheader("Rating Distribution")
 st.bar_chart(df["rating"].value_counts())
